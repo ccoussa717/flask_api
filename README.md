@@ -1,7 +1,7 @@
 # Chameleon Consulting Group Interview Scenario
 ## Goal:
-### To create an Azure Virtual Desktop instance that is accesable from a specified IP range
-### To deploy one HTTP server that is only accesable from the Azure Virtual Desktop
+### To create an Azure Virtual Desktop instance that is accessible from a specified IP range
+### To deploy one HTTP server that is only accessible from the Azure Virtual Desktop
 <br>
 
 ### Initial Thoughts
@@ -12,7 +12,7 @@ Need to decide what IaC tool to use
 </p>
 
 <p>
-I have created a simple REST api using python and the Flask framework. I chose python for its ease of use and flexibility. I used the Flask framework because it is a super lightweight framework, but has a development webserver and sqlite3 db included in the framework.
+I have created a simple REST api using python and the Flask framework. I chose python for its ease of use and flexibility. I used the Flask framework because it is a super lightweight framework but has a development webserver and sqlite3 db included in the framework.
 </p>
 
 <br>
@@ -35,13 +35,13 @@ This is also why it’s important to only make changes to your deployment enviro
 <br>
 - Checked for Azure provider
 <br>
-- Terraform gives you the code needed to start using Azure provider, then you run terrform init
+- Terraform gives you the code needed to start using Azure provider, then you run terraform init
 <br>
 - Before you can use Terraform to deploy to Azure, you need to run a couple commands
 <br>
     - az login
     <br>
-    This takes you to an Azure login page for your accout
+    This takes you to an Azure login page for your account
     <br>
     - az extension add --upgrade -n account
     <br>
@@ -55,7 +55,11 @@ Once you're logged in to your account, you can start creating the main.tf file, 
     <br>
     - terraform apply
 </p>
+<br>
+<p>
+I was able to log in to Azure through the cli, create a main.tf file and deploy a resource group and a Virtual Desktop Application
+</p>
 
 ### Lesson Learned
-<p>Terraform creates a .terraform file that is bigger than 100MB. When you try to push it to your git repo it's rejected as too big. You have to download and instll git lfs (large file storage) in order to upload it to github.</p>
+<p>Terraform creates a .terraform file that is bigger than 100MB. When you try to push it to your git repo it's rejected as too big. You have to download and install git lfs (large file storage) in order to upload it to github.</p>
 <p>I got very familiar with git errors, deleting local git repos, starting over, and re-initializing repos.</p>
