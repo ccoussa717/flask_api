@@ -32,17 +32,27 @@ This is also why it’s important to only make changes to your deployment enviro
 ### Learning to use Terraform with Azure
 <p>
 - Went to the Terraform docs
+<br>
 - Checked for Azure provider
+<br>
 - Terraform gives you the code needed to start using Azure provider, then you run terrform init
+<br>
 - Before you can use Terraform to deploy to Azure, you need to run a couple commands
+<br>
     - az login
+    <br>
     This takes you to an Azure login page for your accout
+    <br>
     - az extension add --upgrade -n account
+    <br>
     This command installs the account plugin for the az-cli so you can manage multiple accounts, and list the account you're currently using
 <br>
 Once you're logged in to your account, you can start creating the main.tf file, and run the terraform commands
+<br>
     - terraform init
+    <br>
     - terraform plan
+    <br>
     - terraform apply
 </p>
 
