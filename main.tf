@@ -8,5 +8,10 @@ terraform {
 }
 
 provider "azurerm" {
-  # Configuration options
+  features {}
+}
+
+resource "azurerm_resource_group" "resource_group" {
+  name     = "Windows10RG"
+  location = "West US 3"
 }
