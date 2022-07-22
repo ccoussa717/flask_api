@@ -1,7 +1,11 @@
 # Chameleon Consulting Group Interview Scenario
+
 ## Goal:
+
 ### To create an Azure Virtual Desktop instance that is accessible from a specified IP range
+
 ### To deploy one HTTP server that is only accessible from the Azure Virtual Desktop
+
 <br>
 
 ### Initial Thoughts
@@ -28,8 +32,8 @@ Being that Terraform is declarative, it makes it much easier to manage drift in 
 This is also why it’s important to only make changes to your deployment environment through Terraform, and not through the Azure CLI once you deploy with Terraform. This is because Terraform checks the state file, and not the Azure environment directly.
 </p>
 
-
 ### Learning to use Terraform with Azure
+
 <p>
 - Went to the Terraform docs
 <br>
@@ -61,5 +65,6 @@ I was able to log in to Azure through the cli, create a main.tf file and deploy 
 </p>
 
 ### Lesson Learned
+
 <p>Terraform creates a .terraform file that is bigger than 100MB. When you try to push it to your git repo it's rejected as too big. You have to download and install git lfs (large file storage) in order to upload it to github.</p>
 <p>I got very familiar with git errors, deleting local git repos, starting over, and re-initializing repos.</p>

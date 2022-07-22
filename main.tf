@@ -1,7 +1,8 @@
+# Provider Information
 terraform {
   required_providers {
     azurerm = {
-      source = "hashicorp/azurerm"
+      source  = "hashicorp/azurerm"
       version = "3.14.0"
     }
   }
@@ -11,50 +12,50 @@ provider "azurerm" {
   features {}
 }
 
+# Create Resource Group
 resource "azurerm_resource_group" "resource_group" {
-  name     = "Windows10RG"
+  name     = "Win10RG-resources"
   location = "East US"
 }
 
-resource "azurerm_virtual_desktop_host_pool" "pooledbreadthfirst" {
-  name                = "pooledbreadthfirst"
+# Create Security Group
+resource "azurerm_network_security_group" "security_group" {
+  name                = "Win10RG-security-group"
+  location            = azurerm_resource_group.resource_group.location
+  resource_group_name = azurerm_resource_group.resource_group.name
+}
+
+# Create Virtual Network
+resource "azurerm_virtual_network" "vnet" {
+  name                = "Win10RG-network"
+  location            = azurerm_resource_group.resource_group.location
+  resource_group_name = azurerm_resource_group.resource_group.name
+  address_space       = ["10.0.0.0/16"]
+}
+
+# Create Virtual Desktop Host Pool
+resource "azurerm_virtual_desktop_host_pool" "host_pool1" {
   location            = azurerm_resource_group.resource_group.location
   resource_group_name = azurerm_resource_group.resource_group.name
 
-  type               = "Pooled"
-  load_balancer_type = "BreadthFirst"
+  name                     = "pool 1"
+  friendly_name            = "pool 1"
+  validate_environment     = true
+  start_vm_on_connect      = true
+  custom_rdp_properties    = "audiocapturemode:i:1;audiomode:i:0;"
+  description              = "Acceptance Test: A pooled host pool - pooleddepthfirst"
+  type                     = "Pooled"
+  maximum_sessions_allowed = 10
+  load_balancer_type       = "DepthFirst"
 }
 
-resource "azurerm_virtual_desktop_host_pool" "personalautomatic" {
-  name                = "personalautomatic"
+# Create a WVD Workspace
+resource "azurerm_virtual_desktop_workspace" "workspace" {
+  name                = "workspace"
   location            = azurerm_resource_group.resource_group.location
   resource_group_name = azurerm_resource_group.resource_group.name
 
-  type                             = "Personal"
-  personal_desktop_assignment_type = "Automatic"
-  load_balancer_type               = "BreadthFirst"
+  friendly_name = "FriendlyName"
+  description   = "A description of my workspace"
 }
 
-resource "azurerm_virtual_desktop_application_group" "remoteapp" {
-  name                = "acctag"
-  location            = azurerm_resource_group.resource_group.location
-  resource_group_name = azurerm_resource_group.resource_group.name
-
-  type          = "RemoteApp"
-  host_pool_id  = azurerm_virtual_desktop_host_pool.pooledbreadthfirst.id
-  friendly_name = "TestAppGroup"
-  description   = "Acceptance Test: An application group"
-}
-
-resource "azurerm_virtual_desktop_application" "chrome" {
-  name                         = "googlechrome"
-  application_group_id         = azurerm_virtual_desktop_application_group.remoteapp.id
-  friendly_name                = "Google Chrome"
-  description                  = "Chromium based web browser"
-  path                         = "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
-  command_line_argument_policy = "DoNotAllow"
-  command_line_arguments       = "--incognito"
-  show_in_portal               = false
-  icon_path                    = "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
-  icon_index                   = 0
-}
