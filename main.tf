@@ -45,17 +45,9 @@ resource "azurerm_virtual_desktop_host_pool" "host_pool1" {
   custom_rdp_properties    = "audiocapturemode:i:1;audiomode:i:0;"
   description              = "Acceptance Test: A pooled host pool - pooleddepthfirst"
   type                     = "Pooled"
-  maximum_sessions_allowed = 10
+  maximum_sessions_allowed = 5
   load_balancer_type       = "DepthFirst"
 }
 
-# Create a WVD Workspace
-resource "azurerm_virtual_desktop_workspace" "workspace" {
-  name                = "workspace"
-  location            = azurerm_resource_group.resource_group.location
-  resource_group_name = azurerm_resource_group.resource_group.name
 
-  friendly_name = "FriendlyName"
-  description   = "A description of my workspace"
-}
 

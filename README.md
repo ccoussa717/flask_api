@@ -35,6 +35,35 @@ Being that Terraform is declarative, it makes it much easier to manage drift in 
 This is also why it’s important to only make changes to your deployment environment through Terraform, and not through the Azure CLI once you deploy with Terraform. This is because Terraform checks the state file, and not the Azure environment directly.
 </p>
 
+#### Learning Azure
+
+<p>The first thing I need to do was get familiar with Azure, and the Virtual Desktop environment. How to create Resource Groups, Host Pools, and VM's for the host pool.<p/>
+
+#### Steps to create an Azure Virtual Desktop
+
+Global Resources
+Create a resource group
+	Ex Win10RG
+Create Virtual Network
+	Select the RG for this vnet
+Virtual Network needs to have a subnet, create a subnet next
+
+Virtual Desktop Resources
+Create Virtual Desktop Resource Pool for RG (grouping of vm’s)
+	Ex Win10RG Host Pool
+	Create a pooled resource, depth-first with connection limit per vm
+ Create Session Hosts (virtual machines) for the Host Pool
+	In order to create a Session host, you first have to create a registration key from the console
+
+A Workspace for the Virtual Desktop is what is going to be shown on the client machine when we log in to the WVD
+
+https://client.wvd.microsoft.com/arm/webclient/index.html  
+This is the link you use to log into a AVD environment
+
+When I tried to login, I couldn’t use my Gmail account, the one I’m logged in to Azure with. I tried my gatech.edu account, but it said my Sys Admin hadn’t set up the service…
+
+
+
 ### Learning to use Terraform with Azure
 
 <p>
