@@ -19,7 +19,10 @@ Need to decide what IaC tool to use
 I have created a simple REST api using python and the Flask framework. I chose python for its ease of use and flexibility. I used the Flask framework because it is a super lightweight framework but has a development webserver and sqlite3 db included in the framework.
 </p>
 
-<br>
+### Decission Process
+
+#### Tech Stack
+#### IaC
 
 <p>
 I chose to use Terraform for my IaC tool because it is declarative vs imperative, as well, Terraform has an extensive registry of provider APIs that are built and maintained by the providers themselves. In the case of Azure, there are prebuilt tools in Terraform that work directly with Azure.
@@ -64,7 +67,16 @@ Once you're logged in to your account, you can start creating the main.tf file, 
 I was able to log in to Azure through the cli, create a main.tf file and deploy a resource group and a Virtual Desktop Application
 </p>
 
+### Dockerizing the Application
+
+<p>I created a Dockerfile for the app to run it in a container so that I can verify that it will run the same on Azure as it does on my machine.
+<br>
+It wasn't as straight forward as some other Docker instances. The CMD line had to be modified to reflect Flask running the application locally on localhost:5000.
+<p/>
+
 ### Lesson Learned
 
 <p>Terraform creates a .terraform file that is bigger than 100MB. When you try to push it to your git repo it's rejected as too big. You have to download and install git lfs (large file storage) in order to upload it to github.</p>
 <p>I got very familiar with git errors, deleting local git repos, starting over, and re-initializing repos.</p>
+
+<p><p/>
