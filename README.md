@@ -73,6 +73,7 @@ When I tried to login, I couldn’t use my Gmail account, the one I’m logged i
   <br>
   This command installs the account plugin for the az-cli so you can manage multiple accounts, and list the account you're currently using
   <br>
+  <br>
   Once you're logged in to your account, you can start creating the main.tf file, and run the terraform commands
   <br> - terraform init
   <br> - terraform plan
