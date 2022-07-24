@@ -102,6 +102,7 @@ Working with Azure is not as initiative and straight forward as one would hope r
 
 You need to be careful about adding resources from the Azure portal and not with Terraform. That is what causes drift. But it seems that there are still some things you can't do from Terraform, such as adding a Session Host (vm) to your WVD environment.
 <br>
+<br>
 Flask includes a development webserver, not a production servee.
 In order to deploy a production instance, you would need a WSGI server such as Gunicorn (which I have as a dependency), and a reverse proxy to handle the asyncronous tracffic and load balancing, such as NGINX.
 Since this is only a demo, I have decided to leave the application running with the Flask development server, and the sqlite3 development db.
