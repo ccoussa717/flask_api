@@ -25,9 +25,8 @@ I chose to use Terraform for my IaC tool because it is declarative vs imperative
 
 <br>
 
-Being that Terraform is declarative, it makes it much easier to manage drift in your cloud deployment. You write statements telling Terraform what you want your deployment environment to look like, and not how Terraform should do it. You let the APIs do the work. Terraform is stateful and manages the states with a state file. When you want to make changes to your deployment environment, you make the changes to the main.tf file, and apply the changes. Terraform compares the main.tf file to the state file and makes the appropriate changes to Azure. 
+Being that Terraform is declarative, it makes it much easier to manage drift in your cloud deployment. You write statements telling Terraform what you want your deployment environment to look like, and not how Terraform should do it. You let the APIs do the work. Terraform is stateful and manages the states with a state file. When you want to make changes to your deployment environment, you make the changes to the main.tf file, and apply the changes. Terraform compares the main.tf file to the state file and makes the appropriate changes to Azure.
 This is also why it’s important to only make changes to your deployment environment through Terraform, and not through the Azure CLI once you deploy with Terraform. This is because Terraform checks the state file, and not the Azure environment directly.
-
 
 ### Learning Azure
 
@@ -59,31 +58,30 @@ When I tried to login, I couldn’t use my Gmail account, the one I’m logged i
 ### Learning to use Terraform with Azure
 
 - Went to the Terraform docs
-<br>
+  <br>
 - Checked for Azure provider
-<br>
+  <br>
 - Terraform gives you the code needed to start using Azure provider, then you run terraform init
-<br>
+  <br>
 - Before you can use Terraform to deploy to Azure, you need to run a couple commands
-<br>
+  <br>
 - az login
-<br>
-This takes you to an Azure login page for your account
-<br>
+  <br>
+  This takes you to an Azure login page for your account
+  <br>
 - az extension add --upgrade -n account
-<br>
-    This command installs the account plugin for the az-cli so you can manage multiple accounts, and list the account you're currently using
-<br>
-Once you're logged in to your account, you can start creating the main.tf file, and run the terraform commands
-<br>
-    - terraform init
-    <br>
-    - terraform plan
-    <br>
-    - terraform apply
-    <br>
-    #### Note:
-    Be carefull with the terraform destoy command, it will destroy everything you have deployed with Terraform
+  <br>
+  This command installs the account plugin for the az-cli so you can manage multiple accounts, and list the account you're currently using
+  <br>
+  Once you're logged in to your account, you can start creating the main.tf file, and run the terraform commands
+  <br> - terraform init
+  <br> - terraform plan
+  <br> - terraform apply
+  <br>
+
+#### Note:
+
+Be carefull with the terraform destoy command, it will destroy everything you have deployed with Terraform
 <br>
 
 I was able to log in to Azure through the cli, create a main.tf file and deploy a resource group and a Virtual Desktop Application
@@ -95,7 +93,6 @@ I am still having trouble logging in to the WVD environment I created manually. 
 I created a Dockerfile for the app to run it in a container so that I can verify that it will run the same on Azure as it does on my machine.
 <br>
 It wasn't as straight forward as some other Docker instances. The CMD line had to be modified to reflect Flask running the application locally on localhost:5000.
-
 
 ### Lesson Learned
 
@@ -112,7 +109,6 @@ I have been able to create a new virtual machine called Webserver. It is a Ubunt
 Changed the vm WebServer to ssh with username and password for right now instead of ussing ssh keys
 I was able to create a new vm server and it allows you to create a new ssh key. I copied it to the .ssh dir, and was able to log in to the Test web server. Was able to get Docker installed and running on the WebServer test vm.
 After a lot of trial and error, reading the Terraform docs, and googling, I still can't find a way to use Terraform to create the vm using ssh keys and connect. When you create the vm server through the Azure portal, you have the option of creating a new ssh key and downloading the private key. That allows access. I will keep working with the WVD environment to see if I can use that to connect to the Webserver vm. They are on the same vnet and subnet, as well as using the shared network interface.
-
 
 #### Update: Day 5
 
