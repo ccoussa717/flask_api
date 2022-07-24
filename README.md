@@ -15,7 +15,7 @@ Need to decide what IaC tool to use
 
 I have created a simple REST api using python and the Flask framework. I chose python for its ease of use and flexibility. I used the Flask framework because it is a super lightweight framework but has a development webserver and sqlite3 db included in the framework.
 
-### Decission Process
+### Decision Process
 
 #### Tech Stack
 
@@ -80,7 +80,7 @@ When I tried to login, I couldn’t use my Gmail account, the one I’m logged i
   <br> - terraform apply
   <br>
 
-#### Note: Be carefull with the terraform destoy command, it will destroy everything you have deployed with Terraform
+#### Note: Be careful with the terraform destroy command, it will destroy everything you have deployed with Terraform
 
 <br>
 I was able to log in to Azure through the cli, create a main.tf file and deploy a resource group and a Virtual Desktop Application
@@ -98,15 +98,15 @@ It wasn't as straight forward as some other Docker instances. The CMD line had t
 Terraform creates a .terraform file that is bigger than 100MB. When you try to push it to your git repo it's rejected as too big. You have to download and install git lfs (large file storage) in order to upload it to github.
 I got very familiar with git errors, deleting local git repos, starting over, and re-initializing repos.
 
-Working with Azure is not as intiative and straight forward as one would hope right away. Things have to be done in a specific order. For instance, when creating a WVD, you need to create the resource group first, then the network and subnet, then you can create the host pool and other resources within the resouce group.
+Working with Azure is not as initiative and straight forward as one would hope right away. Things have to be done in a specific order. For instance, when creating a WVD, you need to create the resource group first, then the network and subnet, then you can create the host pool and other resources within the resource group.
 
-You need to be carefull about adding resources from the Azure portal and not with Terraform. That is what causes drift. But it seems that there are stil some things you can't do from Terraform, such as adding a Session Host (vm) to your WVD environment.
+You need to be careful about adding resources from the Azure portal and not with Terraform. That is what causes drift. But it seems that there are still some things you can't do from Terraform, such as adding a Session Host (vm) to your WVD environment.
 
 #### Update: day 4
 
 I have been able to create a new virtual machine called Webserver. It is a Ubuntu 18.04 LTS server. It is provisioned, and I can test the connection through ssh on the Azure portal. The ssh test says connection to the server is accepted from my IP address...still not able to ssh from my terminal.
 Changed the vm WebServer to ssh with username and password for right now instead of ussing ssh keys
-I was able to create a new vm server and it allows you to create a new ssh key. I copied it to the .ssh dir, and was able to log in to the Test web server. Was able to get Docker installed and running on the WebServer test vm.
+I was able to create a new vm server and it allows you to create a new ssh key. I copied it to the .ssh dir and was able to log in to the Test web server. Was able to get Docker installed and running on the WebServer test vm.
 After a lot of trial and error, reading the Terraform docs, and googling, I still can't find a way to use Terraform to create the vm using ssh keys and connect. When you create the vm server through the Azure portal, you have the option of creating a new ssh key and downloading the private key. That allows access. I will keep working with the WVD environment to see if I can use that to connect to the Webserver vm. They are on the same vnet and subnet, as well as using the shared network interface.
 
 #### Update: Day 5
@@ -120,3 +120,5 @@ https://buildvirtual.net/how-to-deploy-wvd-using-terraform/
 https://buildvirtual.net/how-to-deploy-wvd-session-hosts-using-terraform/
 <br>
 It turns out that WVD is a new feature to Azure. It only came out in 2020, so that could be why complete documentation on the subject is still hard to find. You just have to dig a little deeper than some of the main functionality.
+<br>
+The second link was to an article explaining that you can add a vm as a session host, but not natively through the Terraform provider. There is a Powershell script that you need to import, and it points to a zip file that downloads...Since there is no way to verify what is in the zip file, and who authored it, I decided not to go that route. Sometime in the future Azure will most likely add the SH feature to the provider API.
