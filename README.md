@@ -118,3 +118,5 @@ I found a couple of good articles on how to build WVD environments with Terrafor
 https://buildvirtual.net/how-to-deploy-wvd-using-terraform/
 <br>
 https://buildvirtual.net/how-to-deploy-wvd-session-hosts-using-terraform/
+<br>
+It turns out that WVD is a new feature to Azure. It only came out in 2020, so that could be why complete documentation on the subject is still hard to find. You just have to dig a little deeper than some of the main functionality.
