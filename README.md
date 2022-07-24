@@ -101,6 +101,11 @@ I got very familiar with git errors, deleting local git repos, starting over, an
 Working with Azure is not as initiative and straight forward as one would hope right away. Things have to be done in a specific order. For instance, when creating a WVD, you need to create the resource group first, then the network and subnet, then you can create the host pool and other resources within the resource group.
 
 You need to be careful about adding resources from the Azure portal and not with Terraform. That is what causes drift. But it seems that there are still some things you can't do from Terraform, such as adding a Session Host (vm) to your WVD environment.
+<br>
+Flask includes a development webserver, not a production servee.
+In order to deploy a production instance, you would need a WSGI server such as Gunicorn (which I have as a dependency), and a reverse proxy to handle the asyncronous tracffic and load balancing, such as NGINX.
+Since this is only a demo, I have decided to leave the application running with the Flask development server, and the sqlite3 development db.
+If this were a production environment I would set up a container for my application, one for NGINX, and another for Postgresql.
 
 #### Update: day 4
 
@@ -122,3 +127,5 @@ https://buildvirtual.net/how-to-deploy-wvd-session-hosts-using-terraform/
 It turns out that WVD is a new feature to Azure. It only came out in 2020, so that could be why complete documentation on the subject is still hard to find. You just have to dig a little deeper than some of the main functionality.
 <br>
 The second link was to an article explaining that you can add a vm as a session host, but not natively through the Terraform provider. There is a Powershell script that you need to import, and it points to a zip file that downloads...Since there is no way to verify what is in the zip file, and who authored it, I decided not to go that route. Sometime in the future Azure will most likely add the SH feature to the provider API.
+
+#### Note: Azure sets usage quotas on their subscriptions, I can only have 4 cores running in one region at a time
