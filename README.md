@@ -112,6 +112,7 @@ After a lot of trial and error, reading the Terraform docs, and googling, I stil
 #### Update: Day 5
 
 Still trying to create a Session Host for the WVD through Terraform.
+
 I found a couple of good articles on how to build WVD environments with Terraform, as well as a Session Host (FINALLY)
 <br>
 https://buildvirtual.net/how-to-deploy-wvd-using-terraform/
