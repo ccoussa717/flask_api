@@ -83,7 +83,6 @@ When I tried to login, I couldn’t use my Gmail account, the one I’m logged i
 #### Note: Be carefull with the terraform destoy command, it will destroy everything you have deployed with Terraform
 
 <br>
-<br>
 I was able to log in to Azure through the cli, create a main.tf file and deploy a resource group and a Virtual Desktop Application
 
 I am still having trouble logging in to the WVD environment I created manually. But now that I have a better understanding of how it is structured, I'm putting it together in Terraform and deploying the RG. There are some configurations that Terraform can't do so I'll have to edit them manually.
