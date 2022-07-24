@@ -66,12 +66,12 @@ When I tried to login, I couldn’t use my Gmail account, the one I’m logged i
 <br>
 - Before you can use Terraform to deploy to Azure, you need to run a couple commands
 <br>
-    - az login
-    <br>
-    This takes you to an Azure login page for your account
-    <br>
-    - az extension add --upgrade -n account
-    <br>
+- az login
+<br>
+This takes you to an Azure login page for your account
+<br>
+- az extension add --upgrade -n account
+<br>
     This command installs the account plugin for the az-cli so you can manage multiple accounts, and list the account you're currently using
 <br>
 Once you're logged in to your account, you can start creating the main.tf file, and run the terraform commands
