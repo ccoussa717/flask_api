@@ -80,9 +80,8 @@ When I tried to login, I couldn’t use my Gmail account, the one I’m logged i
   <br> - terraform apply
   <br>
 
-#### Note:
+#### Note: Be carefull with the terraform destoy command, it will destroy everything you have deployed with Terraform
 
-Be carefull with the terraform destoy command, it will destroy everything you have deployed with Terraform
 <br>
 <br>
 I was able to log in to Azure through the cli, create a main.tf file and deploy a resource group and a Virtual Desktop Application
