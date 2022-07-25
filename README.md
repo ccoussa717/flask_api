@@ -128,3 +128,6 @@ It turns out that WVD is a new feature to Azure. It only came out in 2020, so th
 The second link was to an article explaining that you can add a vm as a session host, but not natively through the Terraform provider. There is a Powershell script that you need to import, and it points to a zip file that downloads...Since there is no way to verify what is in the zip file, and who authored it, I decided not to go that route. Sometime in the future Azure will most likely add the SH feature to the provider API.
 
 #### Note: Azure sets usage quotas on their subscriptions, I can only have 4 cores running in one region at a time
+
+#### Update: Day 6
+I am now having trouble connecting to the server vm that is being created with TF. The Terraform CLI won't let me create a username and password to log in to the server, only set it to ssh. The issue is, no ssh key is being generated with the deployment of the server. When I create the server through the Azure portal I can generate a new ssh and download the private key. 
