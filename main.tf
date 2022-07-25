@@ -9,7 +9,11 @@ terraform {
 }
 
 provider "azurerm" {
-  features {}
+  features {
+    virtual_machine {
+      delete_os_disk_on_deletion = true
+    }
+  }
 }
 
 # Create Resource Group
@@ -23,6 +27,19 @@ resource "azurerm_network_security_group" "security_group" {
   name                = "Win10RG-security-group"
   location            = azurerm_resource_group.resource_group.location
   resource_group_name = azurerm_resource_group.resource_group.name
+}
+
+resource "azurerm_network_security_rule" "security_rule_ssh" {
+    name                        = "SSH"
+    priority                    = "100"
+    direction                   = "Inbound"
+    access                      = "Allow"
+    protocol                    = "Tcp"
+    source_port_range           = "*"
+    destination_port_range      = "22"
+    source_address_prefix       = "*"
+    resource_group_name         = azurerm_resource_group.resource_group.name
+    network_security_group_name = azurerm_network_security_group.security_group.name
 }
 
 # Create Virtual Network
