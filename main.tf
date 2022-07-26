@@ -77,17 +77,6 @@ resource "azurerm_network_interface" "vnet-interface" {
   ]
 }
 
-resource "azurerm_public_ip" "public_ip" {
-  name                = "acceptanceTestPublicIp1"
-  resource_group_name = azurerm_resource_group.resource_group.name
-  location            = azurerm_resource_group.resource_group.location
-  allocation_method   = "Dynamic"
-
-  tags = {
-    environment = "Development"
-  }
-}
-
 # Create Virtual Desktop Host Pool
 resource "azurerm_virtual_desktop_host_pool" "host_pool1" {
   location            = azurerm_resource_group.resource_group.location
